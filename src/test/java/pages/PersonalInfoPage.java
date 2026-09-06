@@ -30,6 +30,11 @@ public class PersonalInfoPage {
         cityInput.scrollIntoCenter();
         cityInput.setValue("Paris");
     }
+    public void fillAddressFields() {
+        addressFieldInput();
+        postCodeInput();
+        cityInput();
+    }
 
     private final ElementsCollection continueButt = $$(".btn.btn-primary");
     public void clickContinueButton () {

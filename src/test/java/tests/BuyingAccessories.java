@@ -26,18 +26,13 @@ public class BuyingAccessories {
 
             open(BASE_URL);
             fp.switchToMainFrame();
+
             fp.clickSignInButton();
             rp.clickCreateAccountButt();
             ur.registerUser();
             fp.checkUserTestInitials();
-            ap.clickAccessoriesTab();
-            ap.clickAccessoriesArrow();
-            ap.clickHomeAccessories();
-            ap.clickPriceArrow();
-            ap.moveRightRoll(-144);
-            ap.moveLeftRoll(32);
-            ap.checkFilterResults();
-            Selenide.sleep(3000);
+            ap.getToHomeAccessories();
+            ap.setPriceRange();
             ap.checkPrices();
             ap.scrollToProduct();
             ap.addSomeRandomItems();
@@ -50,9 +45,7 @@ public class BuyingAccessories {
             ap.clickProceedModule();
             ap.assertSummarySumm();
             ap.clickProceedToCheckOut();
-            pi.addressFieldInput();
-            pi.postCodeInput();
-            pi.cityInput();
+            pi.fillAddressFields();
             pi.clickContinueButton();
             pi.selectDeliveryOption2();
             pi.clickContinueToPayment();

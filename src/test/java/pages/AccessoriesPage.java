@@ -32,7 +32,11 @@ public class AccessoriesPage {
     private final SelenideElement homeAccessories = $$(".category-tree__item-link").findBy(exactText("Home Accessories"));
     public void clickHomeAccessories() {homeAccessories.shouldBe(visible).click();
     }
-
+    public void getToHomeAccessories() {
+        clickAccessoriesTab();
+        clickAccessoriesArrow();
+        clickHomeAccessories();
+    }
 
     private final SelenideElement leftPriceRoll = $(".noUi-handle.noUi-handle-lower");
 
@@ -46,6 +50,14 @@ public class AccessoriesPage {
         rightPriceRoll.scrollIntoCenter();
         Selenide.sleep(2000);
         actions().dragAndDropBy(rightPriceRoll, pixels, 0).perform();}
+
+    public void setPriceRange() {
+        Selenide.sleep(2000);
+        priceArrow.shouldBe(visible).click();
+        moveRightRoll(-144);
+        moveLeftRoll(32);
+        checkFilterResults();
+        Selenide.sleep(3000);}
 
     private final SelenideElement filterResults = $(".search-filters__slider-values.js-faceted-values");
     public void checkFilterResults() {filterResults.shouldBe(visible).shouldHave(text("€18.05 - €23.76"));}
